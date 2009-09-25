@@ -94,17 +94,39 @@
 
 
 %%% Use Computer Modern Typewriter as the monospace typeface.
-%%% (Stolen from cs70.cls.)
-\RequirePackage{cmtty}
+%%% (Code from cmtty.sty.)
 
-\DeclareRobustCommand\tyfamily{\fontfamily{cmtt}\fontencoding{OT1}\fontseries{m}\selectfont}
+\DeclareRobustCommand{\tyfamily}{%
+  \fontfamily{cmtt}\fontencoding{OT1}\fontseries{m}\selectfont}
 
 \DeclareTextFontCommand{\textty}{\tyfamily}
-\def\verbatim@font{\normalfont\tyfamily}
-%\def\url@ttstyle{%
-%\@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\sffamily}}\Url@ttdo
-%}
 
+
+\let\texttt\textty
+\let\tt\tyfamily
+\let\ttfamily\tyfamily
+
+%%% Make it possible to hyphenate type set in Computer Modern
+%%% typewriter.
+
+\begingroup
+\catcode`\`=\active
+\gdef\FV@fontfamily@tt{%
+  \def\FV@FontScanPrep{\FV@MakeActive\`}%
+%% SR modification begin - 1995
+%%  \def\FV@FontFamily{\tt`{{\string`}}}}
+  \def\FV@FontFamily{\tyfamily\edef`{{\string`}}}}
+%% SR modification end
+\gdef\FV@fontfamily@cmtt{%
+  \def\FV@FontScanPrep{\FV@MakeActive\`}%
+  \def\FV@FontFamily{\edef`{{\string`}}\fontfamily{cmtt}}}
+\endgroup
+
+\AtBeginDocument{%
+  \def\verbatim@font{\normalfont\tyfamily}}
+
+
+%% Use sans-serif for the URLs.
 \renewcommand{\url}{\begingroup \def\UrlLeft{<}\def\UrlRight{>}%
    \urlstyle{sf}\Url}
 
