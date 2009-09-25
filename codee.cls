@@ -133,7 +133,7 @@
 
 %%% Define some commands for use with this class.
 \newcommand{\@pubname}{Consortium of Ordinary Differential Equations Journal}
-\newcommand{\@codeebase}{http://www.codee.org/}
+\newcommand{\@codeebase}{http://www.codee.org/ref/}
 % \def\author#1{\gdef\@author{#1}\gdef\@headauthor{#1}}
 % \def\@author{\@latex@warning@no@line{No \noexpand\author given}\relax}
 % \def\title#1{\gdef\@title{#1}\gdef\@headtitle{#1}}
