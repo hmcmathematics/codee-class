@@ -59,7 +59,7 @@
 \RequirePackage{verbatim}
 \RequirePackage{ifthen}
 \RequirePackage{graphics}
-\RequirePackage[backref,colorlinks,]{hyperref}
+\RequirePackage[backref,colorlinks,breaklinks]{hyperref}
 \RequirePackage{url}
 \RequirePackage{fancyhdr}
 \RequirePackage{ifpdf}
@@ -79,8 +79,11 @@
 \RequirePackage[opticals,mathlf,minionint]{MinionPro}
 \RequirePackage[toc,eqno,bib,lineno]{tabfigures}
 \RequirePackage[sf,scaled=0.85]{myriad}
-% \RequirePackage[oldstyle]{kepler}
-% \RequirePackage[sf]{cronos}
+
+% %% Define a version of textsf with lining numerals.
+% \DeclareRobustCommand{\sflfamily}{%
+%   \fontfamily
+
 
 % \RequirePackage[scaled=0.95]{helvet}
 % \RequirePackage{mm}
@@ -126,9 +129,16 @@
   \def\verbatim@font{\normalfont\tyfamily}}
 
 
-%% Use sans-serif for the URLs.
-\renewcommand{\url}{\begingroup \def\UrlLeft{<}\def\UrlRight{>}%
-   \urlstyle{sf}\Url}
+%% Use sans-serif for URLs.
+\def\url@sfstyle{%
+ \@ifundefined{selectfont}{\def\UrlFont{\sf\lnstyle}}{\def\UrlFont{\sffamily\lnstyle}}}
+
+\renewcommand{\url}{\begingroup \urlstyle{sf}\Url}
+
+%% Define a command for creating a link to a URL in text while
+%% displaying the URL (as opposed to using text as a link, for
+%% which \href is fine).
+\newcommand{\hlurl}[1]{\href{#1}{\textsf{\lnstyle{}#1}}}
 
 
 \begingroup
@@ -201,7 +211,7 @@
   % \fancyhead[LO]{\textsf{\nouppercase{\rightmark}}}
   \fancyhead[RO]{\textsf{\textbf{\lnstyle\thepage}}}
   \fancyfoot[LE,RO]{\textsf{\textsc{Codee} Learning Assets Library: \@pubtype}}
-  \fancyfoot[RE,LO]{\textsf{\href{\@codeebase\@articlenumber}{\@codeebase\@articlenumber}}}
+  \fancyfoot[RE,LO]{\hlurl{\@codeebase\@articlenumber}}
   \renewcommand{\headrulewidth}{1pt}
   \renewcommand{\footrulewidth}{1pt}
 
@@ -209,7 +219,7 @@
   \fancyhf{}
   \fancyfoot[LE,LO]{{\fontshape{scit}\selectfont Codee}\emph{ Journal}}
   \fancyfoot[RE,RO]{\textsf{Learning Assets Library: \@pubtype\
-      \textbullet\ \href{\@codeebase\@articlenumber}{\@codeebase\@articlenumber}}}
+      \textbullet\ \hlurl{\@codeebase\@articlenumber}}}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{1pt}
 }
