@@ -59,7 +59,6 @@
 \RequirePackage{verbatim}
 \RequirePackage{ifthen}
 \RequirePackage{graphics}
-\RequirePackage[backref,colorlinks,breaklinks]{hyperref}
 \RequirePackage{url}
 \RequirePackage{fancyhdr}
 \RequirePackage{ifpdf}
@@ -126,6 +125,7 @@
 \endgroup
 
 \AtBeginDocument{%
+  \RequirePackage[backref,colorlinks,breaklinks]{hyperref}
   \def\verbatim@font{\normalfont\tyfamily}}
 
 
