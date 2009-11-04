@@ -178,14 +178,16 @@
 \renewcommand{\title}[1]{\newcommand{\@headtitle}{#1}\@ldTitle{#1}}
 \newcommand{\address}[1]{\relax}
 \newcommand{\dedicatory}[1]{\relax}
-\def\keywords#1{\gdef\@keywords{#1}}
-\def\@keywords{\@latex@warning@no@line{No \noexpand\keywords given}\relax}
-\def\articlenumber#1{\gdef\@articlenumber{#1}}
-\def\@articlenumber{\@latex@warning@no@line{No \noexpand\articlenumber given}\relax}
-\def\submissiondate#1{\gdef\@submitdate{#1}}
-\def\@submitdate{\@latex@warning@no@line{No \noexpand\submissiondate given}\relax}
-\def\publicationdate#1{\gdef\@pubdate{#1}}
-\def\@pubdate{\@latex@warning@no@line{No \noexpand\publicationdate given}\relax}
+\newcommand{\keywords}[1]{\gdef\@keywords{#1}}
+\newcommand{\@keywords}{\@latex@warning@no@line{No \noexpand\keywords given}\relax}
+\newcommand{\articlenumber}[1]{\gdef\@articlenumber{#1}}
+\newcommand{\@articlenumber}{\@latex@warning@no@line{No \noexpand\articlenumber given}\relax}
+\newcommand{\submissiondate}[1]{\gdef\@submitdate{#1}}
+\newcommand{\@submitdate}{\@latex@warning@no@line{No
+    \noexpand\submissiondate given}{To Be Determined}}
+\newcommand{\publicationdate}[1]{\gdef\@pubdate{#1}}
+\newcommand{\@pubdate}{\@latex@warning@no@line{No
+    \noexpand\publicationdate given}{To Be Determined}}
 % \def\issuevolume#1{\gdef\@issuevolume{#1}}
 % \def\@issuevolume{\@latex@warning@no@line{No \noexpand\volume given}\relax}
 % \def\issuenumber#1{\gdef\@issuenumber{#1}}
