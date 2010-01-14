@@ -62,7 +62,7 @@
 \RequirePackage{url}
 \RequirePackage{fancyhdr}
 \RequirePackage{ifpdf}
-\RequirePackage[tmargin=1in,hmarginratio=1:1]{geometry}
+\RequirePackage[tmargin=1in,hmarginratio=1:1,vmarginratio=1:1]{geometry}
 
 \RequirePackage{color}
 \definecolor{article}{cmyk}{0.48,0.31,0,0}
@@ -125,9 +125,12 @@
 \endgroup
 
 \AtBeginDocument{%
-  \RequirePackage[backref,colorlinks,breaklinks]{hyperref}
+%  \RequirePackage[backref,colorlinks,breaklinks]{hyperref}
+  \hypersetup{backref,
+    colorlinks=true,
+    breaklinks=true,
+    pdfpagemode=FullScreen}
   \def\verbatim@font{\normalfont\tyfamily}}
-
 
 %% Use sans-serif for URLs.
 \def\url@sfstyle{%
