@@ -43,7 +43,11 @@
 \DeclareOption{project}%
 {\renewcommand{\@colorscheme}{project}%
   \renewcommand{\@pubtype}{Project}}
-  
+
+\newif\ifcodeefinal\codeefinalfalse
+\DeclareOption{codeefinal}%
+{\codeefinaltrue}
+
 \ExecuteOptions{}
 \ProcessOptions
 
@@ -74,26 +78,17 @@
 
 
 %%% Set the base font.
-%\RequirePackage{mathpazo}
+
+\ifcodeefinal
 \RequirePackage[opticals,mathlf,minionint]{MinionPro}
 \RequirePackage[toc,eqno,bib,lineno]{tabfigures}
 \RequirePackage[sf,scaled=0.85]{myriad}
-
-% %% Define a version of textsf with lining numerals.
-% \DeclareRobustCommand{\sflfamily}{%
-%   \fontfamily
-
-
-% \RequirePackage[scaled=0.95]{helvet}
-% \RequirePackage{mm}
-
-
-%% Make Cronos the sans-serif font family
-% \renewcommand{\sfdefault}{pmy}
-% \def\sftndefault{pmy}%                  % (sans font for titling numerals)
-% \def\sffndefault{pmy}%                 % (sans font for footnote
-%                       %                 numbers)
-
+\else
+% If Minion not available, use Times and Helvetica.
+\RequirePackage{times}
+\RequirePackage[scaled=0.85]{helvet}
+\providecommand{\lnstyle}{\relax}
+\fi
 
 %%% Use Computer Modern Typewriter as the monospace typeface.
 %%% (Code from cmtty.sty.)
