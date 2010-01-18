@@ -123,26 +123,6 @@
 
 
 
-% \@ifpackageloaded{hyperref}{%  hyperref is loaded
-%   \AtBeginDocument{%
-%     \hypersetup{backref,
-%       colorlinks=true,
-%       breaklinks=true,
-%       pdfpagemode=FullScreen}
-
-%     %% Define a command for creating a link to a URL in text while
-%     %% displaying the URL (as opposed to using text as a link, for
-%     %% which \href is fine).
-%     \providecommand{\hlurl}[1]{\href{#1}{\textsf{\lnstyle{}#1}}}
-%   }
-% }{% hyperref not loaded
-%   \ClassWarning{codee}{Load hyperref for additional functionality.}
-%   \providecommand{\hlurl}[1]{\textsf{\lnstyle{}#1}}
-%   \providecommand{\href}[2]{#1}
-% }
-
-
-
 %%% Load hyperref if not loaded.
 \@ifpackageloaded{hyperref}{}{%
   \AtBeginDocument{\usepackage{hyperref}}
@@ -153,7 +133,10 @@
   \hypersetup{backref,
     colorlinks=true,
     breaklinks=true,
-    pdfpagemode=FullScreen}
+    bookmarks,
+    pdfpagemode=UseOutlines,
+    pdfpagelayout=SinglePage
+}
   
   %% Define a command for creating a link to a URL in text while
   %% displaying the URL (as opposed to using text as a link, for
