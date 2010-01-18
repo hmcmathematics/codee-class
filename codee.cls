@@ -166,12 +166,11 @@
 
 
 \ifpdf
-
-%%% Allow searching for ligatures in PDF.
-\IfFileExists{glyphtounicode}{%
-  \input{glyphtounicode}
-  \pdfgentounicode=1}{}
-\usepackage{microtype}
+  %%% Allow searching for ligatures in PDF.
+  \IfFileExists{glyphtounicode}{%
+    \input{glyphtounicode}
+    \pdfgentounicode=1}{}
+  \RequirePackage{microtype}
 \fi
 
 
