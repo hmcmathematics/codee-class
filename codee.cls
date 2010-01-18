@@ -119,25 +119,54 @@
   \def\FV@FontFamily{\edef`{{\string`}}\fontfamily{cmtt}}}
 \endgroup
 
+\AtBeginDocument{\def\verbatim@font{\normalfont\tyfamily}}
+
+
+
+% \@ifpackageloaded{hyperref}{%  hyperref is loaded
+%   \AtBeginDocument{%
+%     \hypersetup{backref,
+%       colorlinks=true,
+%       breaklinks=true,
+%       pdfpagemode=FullScreen}
+
+%     %% Define a command for creating a link to a URL in text while
+%     %% displaying the URL (as opposed to using text as a link, for
+%     %% which \href is fine).
+%     \providecommand{\hlurl}[1]{\href{#1}{\textsf{\lnstyle{}#1}}}
+%   }
+% }{% hyperref not loaded
+%   \ClassWarning{codee}{Load hyperref for additional functionality.}
+%   \providecommand{\hlurl}[1]{\textsf{\lnstyle{}#1}}
+%   \providecommand{\href}[2]{#1}
+% }
+
+
+
+%%% Load hyperref if not loaded.
+\@ifpackageloaded{hyperref}{}{%
+  \AtBeginDocument{\usepackage{hyperref}}
+}
+
+%%% Set some defaults for hyperref.
 \AtBeginDocument{%
-%  \RequirePackage[backref,colorlinks,breaklinks]{hyperref}
   \hypersetup{backref,
     colorlinks=true,
     breaklinks=true,
     pdfpagemode=FullScreen}
-  \def\verbatim@font{\normalfont\tyfamily}}
+  
+  %% Define a command for creating a link to a URL in text while
+  %% displaying the URL (as opposed to using text as a link, for
+  %% which \href is fine).
+  \providecommand{\hlurl}[1]{\href{#1}{\textsf{\lnstyle{}#1}}}
+}
+
 
 %% Use sans-serif for URLs.
 \def\url@sfstyle{%
  \@ifundefined{selectfont}{\def\UrlFont{\sf\lnstyle}}{\def\UrlFont{\sffamily\lnstyle}}}
 
 \renewcommand{\url}{\begingroup \urlstyle{sf}\Url}
-
-%% Define a command for creating a link to a URL in text while
-%% displaying the URL (as opposed to using text as a link, for
-%% which \href is fine).
-\newcommand{\hlurl}[1]{\href{#1}{\textsf{\lnstyle{}#1}}}
-
 
 \begingroup
 \catcode`\`=\active
@@ -153,9 +182,10 @@
 \endgroup
 
 
-%%% Allow searching for ligatures in PDF.
 \ifpdf
-\input glyphtounicode 
+
+%%% Allow searching for ligatures in PDF.
+\InputIfFileExists{glyphtounicode}{}{}
 \pdfgentounicode=1
 \usepackage{microtype}
 \fi
