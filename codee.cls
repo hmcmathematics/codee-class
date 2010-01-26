@@ -85,7 +85,7 @@
 \RequirePackage[sf,scaled=0.85]{myriad}
 \else
 % If Minion not available, use Times and Helvetica.
-\RequirePackage{times}
+\RequirePackage{mathptmx}
 \RequirePackage[scaled=0.85]{helvet}
 \providecommand{\lnstyle}{\relax}
 \fi
