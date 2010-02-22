@@ -174,20 +174,76 @@
 \fi
 
 
-%%% Define some commands for use with this class.
+%%% Code for handling \author and \affiliation commands.  Code is
+%%% taken from or based on Boris Veytsman's erdc class; some of
+%%% that code was based on work done for the AMS.
+\newcommand{\xandlist}[4]{\@andlista{{#1}{#2}{#3}}#4\and\and}
+\def\@andlista#1#2\and#3\and{\@andlistc{#2}\@ifnotempty{#3}{%
+  \@andlistb#1{#3}}}
+\def\@andlistb#1#2#3#4#5\and{%
+  \@ifempty{#5}{%
+    \@andlistc{#2#4}%
+  }{%
+    \@andlistc{#1#4}\@andlistb{#1}{#3}{#3}{#5}%
+  }}
+\let\@andlistc\@iden
+\newcommand{\nxandlist}[4]{%
+  \def\@andlistc##1{\toks@\@xp{\the\toks@##1}}%
+  \toks@{\toks@\@emptytoks \@andlista{{#1}{#2}{#3}}}%
+  \the\@xp\toks@#4\and\and
+  \edef#4{\the\toks@}%
+  \let\@andlistc\@iden}
+\def\@@and{and}
+\newcommand{\andify}{%
+  \nxandlist{\unskip, }{\unskip{} \@@and~}{\unskip, \@@and~}}
+\def\and{\unskip{ }\@@and{ }\ignorespaces}
+\let\@xp\expandafter\relax
+\let\@nx=\noexpand
+\def\@oparg#1[#2]{\@ifnextchar[{#1}{#1[#2]}}
+\long\def\@ifempty#1{\@xifempty#1@@..\@nil}
+\long\def\@xifempty#1#2@#3#4#5\@nil{%
+  \ifx#3#4\@xp\@firstoftwo\else\@xp\@secondoftwo\fi}
+\long\def\@ifnotempty#1{\@ifempty{#1}{}}
+\def\setboxz@h{\setbox\z@\hbox}
+\def\@addpunct#1{%
+  \relax\ifhmode
+    \ifnum\spacefactor>\@m \else#1\fi
+  \fi}
+\newtoks\@emptytoks
+\def\authors{}
+\def\addresses{}
+\def\author#1{%
+  \ifx\@empty\authors\gdef\authors{#1}\else
+  \g@addto@macro{\authors}{\and#1}\fi
+  \ifx\@empty\@addresses\gdef\addresses{\author{#1}}\else
+  \g@addto@macro{\addresses}{\par\author{#1}}\fi}
+\def\affiliation#1{%
+  \ifx\@empty\@addresses\gdef\addresses{#1\par}\else
+  \g@addto@macro{\addresses}{#1\par\vspace{\baselineskip}}\fi}
+
+
+
+
+%%% Additional frontmatter commands:
 \newcommand{\@pubname}{Consortium of Ordinary Differential Equations Journal}
 \newcommand{\@codeebase}{http://www.codee.org/ref/}
+
+\newcommand{\shortauthor}[1]{\gdef\@shortauthor{#1}}
+\newcommand{\@shortauthor}{\@latex@warning@no@line{No
+    \noexpand\shortauthor given} No \texttt{shortauthor} Defined}
+
+
 % \def\author#1{\gdef\@author{#1}\gdef\@headauthor{#1}}
 % \def\@author{\@latex@warning@no@line{No \noexpand\author given}\relax}
 % \def\title#1{\gdef\@title{#1}\gdef\@headtitle{#1}}
 % \def\@title{\@latex@warning@no@line{No \noexpand\title given}\relax}
-\let\@ldAuthor\author
-\renewcommand{\author}[1]{\renewcommand{\thanks}[1]{}%
-  \renewcommand{\and}{; }%
-  \edef\@headauthor{#1}\@ldAuthor{#1}}
+% \let\@ldAuthor\author
+% \renewcommand{\author}[1]{\renewcommand{\thanks}[1]{}%
+%   \renewcommand{\and}{; }%
+%   \edef\@headauthor{#1}\@ldAuthor{#1}}
 \let\@ldTitle\title
 \renewcommand{\title}[1]{\newcommand{\@headtitle}{#1}\@ldTitle{#1}}
-\newcommand{\address}[1]{\relax}
+% \newcommand{\address}[1]{\relax}
 \newcommand{\dedicatory}[1]{\relax}
 \newcommand{\keywords}[1]{\gdef\@keywords{#1}}
 \newcommand{\@keywords}{\@latex@warning@no@line{No \noexpand\keywords given}\relax}
@@ -219,7 +275,7 @@
   \fancyhf{}                    % Clear all headers and footers.
   \fancyhead[LE]{\textsf{\textbf{\lnstyle\thepage}}}
   \fancyhead[RE]{\textsf{\nouppercase{\@headtitle}}}
-  \fancyhead[LO]{\textsf{\nouppercase{\@headauthor}}}
+  \fancyhead[LO]{\textsf{\nouppercase{\@shortauthor}}}
   % \fancyhead[RE]{\textsf{\nouppercase{\leftmark}}}
   % \fancyhead[LO]{\textsf{\nouppercase{\rightmark}}}
   \fancyhead[RO]{\textsf{\textbf{\lnstyle\thepage}}}
@@ -355,19 +411,23 @@ the#1\endcsname}\quad}%
   \newpage
   \null
   \vskip 2em%
-  \let \footnote \thanks
+  \let\footnote\thanks
   {\LARGE\raggedright\noindent\emph{\lnstyle\@title} \par}%
   {\large
     \lineskip .5em%
-    \global\let\and\\
-    \noindent\@author\par
+     \def\author##1{%
+       \def\@tempa{##1}%
+       \nxandlist{\unskip, }{\unskip{} \@@and~}{\unskip, \@@and~}\@tempa
+       {\upshape\normalsize\@tempa}\par\vspace{1.5\p@}}%
+     \begin{minipage}{\textwidth}
+     \textit{\footnotesize\addresses}\par
+   \end{minipage}
     \vskip 1em%
   }
     {\normalsize\noindent\textsf{\textbf{Keywords:}} \@keywords \par}%
     \par
     {\small\noindent Manuscript received on \@submitdate;
       published on \@pubdate.\par}%
-    \par
     \vskip 1.5em% 
 }
 
