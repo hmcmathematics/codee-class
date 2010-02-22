@@ -223,7 +223,7 @@
 
 
 
-%%% Additional frontmatter commands:
+%%% Additional frontmatter commands.
 \newcommand{\@pubname}{Consortium of Ordinary Differential Equations Journal}
 \newcommand{\@codeebase}{http://www.codee.org/ref/}
 
@@ -231,9 +231,15 @@
 \newcommand{\@shortauthor}{\@latex@warning@no@line{No
     \noexpand\shortauthor given} No \texttt{shortauthor} Defined}
 
+\newcommand{\shorttitle}[1]{\gdef\@shorttitle{#1}}
+\renewcommand*{\title}[2][\DefaultTitle]{%
+  \def\DefaultTitle{#2}
+  \gdef\@shorttitle{#1}%
+  \gdef\@title{#2}}
 
-\let\@ldTitle\title
-\renewcommand{\title}[1]{\newcommand{\@headtitle}{#1}\@ldTitle{#1}}
+
+% \let\@ldTitle\title
+% \renewcommand{\title}[1]{\newcommand{\@headtitle}{#1}\@ldTitle{#1}}
 % \newcommand{\address}[1]{\relax}
 \newcommand{\dedicatory}[1]{\relax}
 \newcommand{\keywords}[1]{\gdef\@keywords{#1}}
@@ -261,7 +267,7 @@
 \pagestyle{fancy}
   \fancyhf{}                    % Clear all headers and footers.
   \fancyhead[LE]{\textsf{\textbf{\lnstyle\thepage}}}
-  \fancyhead[RE]{\textsf{\nouppercase{\@headtitle}}}
+  \fancyhead[RE]{\textsf{\nouppercase{\@shorttitle}}}
   \fancyhead[LO]{\textsf{\nouppercase{\@shortauthor}}}
   \fancyhead[RO]{\textsf{\textbf{\lnstyle\thepage}}}
   \fancyfoot[LE,RO]{\textsf{\textsc{Codee} Learning Assets Library: \@pubtype}}
