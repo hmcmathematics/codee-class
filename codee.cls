@@ -57,7 +57,6 @@
 
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
-%\RequirePackage[psamsfonts]{amsfonts}
 \RequirePackage{amsthm}
 \RequirePackage{xspace}
 \RequirePackage{verbatim}
@@ -233,14 +232,6 @@
     \noexpand\shortauthor given} No \texttt{shortauthor} Defined}
 
 
-% \def\author#1{\gdef\@author{#1}\gdef\@headauthor{#1}}
-% \def\@author{\@latex@warning@no@line{No \noexpand\author given}\relax}
-% \def\title#1{\gdef\@title{#1}\gdef\@headtitle{#1}}
-% \def\@title{\@latex@warning@no@line{No \noexpand\title given}\relax}
-% \let\@ldAuthor\author
-% \renewcommand{\author}[1]{\renewcommand{\thanks}[1]{}%
-%   \renewcommand{\and}{; }%
-%   \edef\@headauthor{#1}\@ldAuthor{#1}}
 \let\@ldTitle\title
 \renewcommand{\title}[1]{\newcommand{\@headtitle}{#1}\@ldTitle{#1}}
 % \newcommand{\address}[1]{\relax}
@@ -255,10 +246,6 @@
 \newcommand{\publicationdate}[1]{\gdef\@pubdate{#1}}
 \newcommand{\@pubdate}{\@latex@warning@no@line{No
     \noexpand\publicationdate given}{To Be Determined}}
-% \def\issuevolume#1{\gdef\@issuevolume{#1}}
-% \def\@issuevolume{\@latex@warning@no@line{No \noexpand\volume given}\relax}
-% \def\issuenumber#1{\gdef\@issuenumber{#1}}
-% \def\@issuenumber{\@latex@warning@no@line{No \noexpand\number given}\relax}
 
 
 
@@ -276,8 +263,6 @@
   \fancyhead[LE]{\textsf{\textbf{\lnstyle\thepage}}}
   \fancyhead[RE]{\textsf{\nouppercase{\@headtitle}}}
   \fancyhead[LO]{\textsf{\nouppercase{\@shortauthor}}}
-  % \fancyhead[RE]{\textsf{\nouppercase{\leftmark}}}
-  % \fancyhead[LO]{\textsf{\nouppercase{\rightmark}}}
   \fancyhead[RO]{\textsf{\textbf{\lnstyle\thepage}}}
   \fancyfoot[LE,RO]{\textsf{\textsc{Codee} Learning Assets Library: \@pubtype}}
   \fancyfoot[RE,LO]{\hlurl{\@codeebase\@articlenumber}}
@@ -293,28 +278,6 @@
   \renewcommand{\footrulewidth}{1pt}
 }
 
-% \pagestyle{fancy}{%
-%   \fancyhf{} %% Clear all headers and footers.
-%   \fancyhead[E]{%
-%     \fcolorbox{\@colorscheme}{\@colorscheme}{%
-%       \makebox[\textwidth][l]{%
-%         {\color{white}\textsc{Codee} Learning Assets Library: \@title}
-% %        {\color{white}\textsc{Codee} Learning Assets Library: \@pubtype}
-%       }
-%     }
-%   }
-%   \fancyhead[O]{\small{\fcolorbox{\@colorscheme}{\@colorscheme}{\href{\@codeebase\@articlenumber}{\@codeebase\@articlenumber}}\hfill}}
-% %   \fancyhead[LE]{\nouppercase\leftmark}
-% %   \fancyhead[RO]{\nouppercase\rightmark}
-%   \fancyfoot[LE]{\textbf{\thepage{}}}
-%   \fancyfoot[RO]{\textbf{\thepage}}
-% %   \fancyfoot[LE]{\emph{\@pubname}}
-% %   \fancyfoot[RO]{Volume \textbf{\@issuevolume}, Number \@issuenumber}
-% }
-% \fancypagestyle{front}{%
-% \fancyhf{}
-% }
-
 
 %%% Redefine the \sectionmark and \subsectionmark commands.  Note that
 %%%  this redefinition must occur after setting pagestyle to fancy.
@@ -326,8 +289,6 @@
 
 %%% Make the section numbers appear using lining figures.
 %%% (\Tf@font comes from the tabfigures package.)
-% \renewcommand{\@seccntformat}[1]{{\fontfamily{pkc}\selectfont\csname%
-% the#1\endcsname}\quad}%
 \renewcommand{\@seccntformat}[1]{{\lnstyle\csname%
 the#1\endcsname}\quad}%
 
@@ -353,28 +314,6 @@ the#1\endcsname}\quad}%
                                       {\sffamily\normalsize\bfseries\lnstyle}}
 
 
-%%% Define the layout of the article header.
-% \renewcommand{\@maketitle}{%
-%   \thispagestyle{front}
-% %  \vspace{-1in}
-%   \let \footnote \thanks
-%   {\LARGE\raggedright\noindent\emph{\lnstyle\@title} \par}%
-%   \vskip 1.5em%
-%   {\large
-%     \lineskip .5em%
-%     \global\let\and\\
-%     \noindent\@author\par
-%     \vskip 1em%
-%   }
-%     {\normalsize\noindent\textsf{\textbf{Keywords:}} \@keywords \par}%
-%     \par
-%     {\small\noindent Manuscript received on \@submitdate;
-%       published on \@pubdate.\par}%
-%     \par
-%     \vskip 1.5em% 
-%     \global\let\@thanks\relax
-%     \global\let\thanks\relax
-% }
 \renewcommand{\maketitle}{\par
   \begingroup
     \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
