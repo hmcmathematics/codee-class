@@ -270,7 +270,7 @@
   \fancyhead[RE]{\textsf{\nouppercase{\@shorttitle}}}
   \fancyhead[LO]{\textsf{\nouppercase{\@shortauthor}}}
   \fancyhead[RO]{\textsf{\textbf{\lnstyle\thepage}}}
-  \fancyfoot[LE,RO]{\textsf{\textsc{Codee} Learning Assets Library: \@pubtype}}
+  \fancyfoot[LE,RO]{\textsf{CODEE} \textsf{Learning Assets Library: \@pubtype}}
   \fancyfoot[RE,LO]{\hlurl{\@codeebase\@articlenumber}}
   \renewcommand{\headrulewidth}{1pt}
   \renewcommand{\footrulewidth}{1pt}
