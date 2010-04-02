@@ -7,14 +7,11 @@
 % Copyright (C) 2009, Consortium for Ordinary Differential
 %                     Equations Educators.
 %
-% Contact Information:
+% Contact Information: codee@hmc.edu
 %
-% To be added later.
-%
-% License:
+% License: Creative Commons Attribution-Noncommercial-Share Alike 3.0 
 % 
-% To be determined.  Good options are GPL, LPPL, some Creative
-% Commons licenses.
+% http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 %
 % \fi
 %%
@@ -270,16 +267,15 @@
   \fancyhead[RE]{\textsf{\nouppercase{\@shorttitle}}}
   \fancyhead[LO]{\textsf{\nouppercase{\@shortauthor}}}
   \fancyhead[RO]{\textsf{\textbf{\lnstyle\thepage}}}
-  \fancyfoot[LE,RO]{\textsf{CODEE} \textsf{Learning Assets Library: \@pubtype}}
-  \fancyfoot[RE,LO]{\hlurl{\@codeebase\@articlenumber}}
+  \fancyfoot[RE,LO]{\textsf{\textit{CODEE Journal} \textbullet\ \@pubtype}}
+  \fancyfoot[LE,RO]{\textsf{Digital Library URL: }\hlurl{\@codeebase\@articlenumber}}
   \renewcommand{\headrulewidth}{1pt}
   \renewcommand{\footrulewidth}{1pt}
 
 \fancypagestyle{front}{%
   \fancyhf{}
-  \fancyfoot[LE,LO]{{\fontshape{scit}\selectfont Codee}\emph{ Journal}}
-  \fancyfoot[RE,RO]{\textsf{Learning Assets Library: \@pubtype\
-      \textbullet\ \hlurl{\@codeebase\@articlenumber}}}
+  \fancyfoot[RE,LO]{\textsf{\textit{CODEE Journal} \textbullet\ \@pubtype}}
+  \fancyfoot[LE,RO]{\textsf{Digital Library URL: }\hlurl{\@codeebase\@articlenumber}}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{1pt}
 }
