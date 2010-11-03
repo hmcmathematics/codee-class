@@ -128,7 +128,8 @@
 \AtBeginDocument{%
   \hypersetup{backref,
     colorlinks=true,
-    breaklinks=true,
+    breaklinks=True,
+    citecolor=blue,
     bookmarks,
     pdfpagemode=UseOutlines,
     pdfpagelayout=SinglePage
