@@ -76,9 +76,12 @@
 %%% Set the base font.
 
 \ifcodeefinal
-\RequirePackage[opticals,mathlf,minionint]{MinionPro}
+% Load the myriad package first, as it breaks the footnote
+% formatting provided by the MinionPro package.
+\RequirePackage[sf,scaled=0.85,lining]{myriad}
+% Now load MinionPro.
+\RequirePackage[opticals,mathlf,minionint,footnotefigures]{MinionPro}
 \RequirePackage[toc,eqno,bib,lineno]{tabfigures}
-\RequirePackage[sf,scaled=0.85]{myriad}
 \else
 % If Minion not available, use Times and Helvetica.
 \RequirePackage{mathptmx}
