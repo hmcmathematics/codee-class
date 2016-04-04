@@ -1,0 +1,5 @@
+# List of files included in the codee-class distribution.
+
+codee.cls
+how-to-prepare-manuscripts.tex
+vector-vs-raster.pdf
