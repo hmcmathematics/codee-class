@@ -273,15 +273,16 @@
   \fancyhead[RE]{\textsf{\nouppercase{\@shorttitle}}}
   \fancyhead[LO]{\textsf{\nouppercase{\@shortauthor}}}
   \fancyhead[RO]{\textsf{\textbf{\lnstyle\thepage}}}
-  \fancyfoot[RE,LO]{\textsf{\textit{CODEE Journal} \textbullet\ \@pubtype}}
-  \fancyfoot[LE,RO]{\textsf{Digital Library URL: }\hlurl{\@codeebase\@articlenumber}}
+  \fancyfoot[RE,LO]{\textsf{\textit{CODEE Journal} \textbullet\
+      \@pubtype\ \textbullet\ \@pubdate{} }}
+  \fancyfoot[LE,RO]{\textsf{Digital Library URL: }\hlurl{http://www.codee.org}}
   \renewcommand{\headrulewidth}{1pt}
   \renewcommand{\footrulewidth}{1pt}
 
 \fancypagestyle{front}{%
   \fancyhf{}
   \fancyfoot[RE,LO]{\textsf{\textit{CODEE Journal} \textbullet\ \@pubtype}}
-  \fancyfoot[LE,RO]{\textsf{Digital Library URL: }\hlurl{\@codeebase\@articlenumber}}
+  \fancyfoot[LE,RO]{\textsf{Digital Library URL: }\hlurl{http://www.codee.org}}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{1pt}
 }
