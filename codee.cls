@@ -152,26 +152,20 @@
   \providecommand{\hlurl}[1]{\href{#1}{\textsf{\lnstyle{}#1}}}
 }
 
-
-%% Use sans-serif for URLs.
-\def\url@sfstyle{%
- \@ifundefined{selectfont}{\def\UrlFont{\sf\lnstyle}}{\def\UrlFont{\sffamily\lnstyle}}}
-
-\renewcommand{\url}{\begingroup \urlstyle{sf}\Url}
-
-\begingroup
-\catcode`\`=\active
-\gdef\FV@fontfamily@tt{%
-  \def\FV@FontScanPrep{\FV@MakeActive\`}%
-%% SR modification begin - 1995
-%%  \def\FV@FontFamily{\tt`{{\string`}}}}
-  \def\FV@FontFamily{\tyfamily\edef`{{\string`}}}}
-%% SR modification end
-\gdef\FV@fontfamily@cmtt{%
-  \def\FV@FontScanPrep{\FV@MakeActive\`}%
-  \def\FV@FontFamily{\edef`{{\string`}}\fontfamily{cmtt}}}
-\endgroup
-
+% The following code *does not work*, because hyperref redefines
+% the \url command to do things its way.
+%
+% %% Use sans-serif for URLs.
+% \def\url@sfstyle{%
+%  \@ifundefined{selectfont}{\def\UrlFont{\sf\lnstyle}}{\def\UrlFont{\sffamily\lnstyle}}}
+%
+% \renewcommand{\url}{\begingroup \urlstyle{sf}\Url}
+%
+% We can get sans-serif URLs, by adding a line similar to
+%    \renewcommand{\url}[1]{\hlurl{#1}}
+% inside the \AtBeginDocument{} block, but then you run into
+% issues with URLs containing characters that TeX considers to be
+% special (e.g., _).  So we'll just leave things as-is for now.
 
 \ifpdf
   %%% Allow searching for ligatures in PDF.
