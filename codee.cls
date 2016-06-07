@@ -19,14 +19,14 @@
 %
 % This work consists of all files listed in manifest.txt.
 %
-% Source code available from https://github.com/hmcmathematics/
+% Source code available from https://github.com/hmcmathematics/codee-class/
 %
 % \fi
 %%
 
 
 \NeedsTeXFormat{LaTeX2e}[1995/06/01]
-\ProvidesClass{codee}[2009/03/05 v0.05 CODEE Journal]
+\ProvidesClass{codee}[2016/06/07 v1.00 CODEE Journal]
 
 %%% Get some useful information when errors occur.
 \setcounter{errorcontextlines}{25}
