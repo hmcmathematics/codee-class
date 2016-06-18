@@ -141,6 +141,7 @@
     \input{glyphtounicode}
     \pdfgentounicode=1}{}
   \RequirePackage{microtype}
+  \DisableLigatures{encoding = T1, family = tt* }
 \fi
 
 
