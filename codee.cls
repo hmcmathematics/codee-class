@@ -83,52 +83,18 @@
 
 %%% Set the base font.
 
-\ifcodeefinal
-% Load the myriad package first, as it breaks the footnote
-% formatting provided by the MinionPro package.
-\RequirePackage[sf,scaled=0.85,lining]{myriad}
-% Now load MinionPro.
-\RequirePackage[opticals,mathlf,minionint,footnotefigures]{MinionPro}
 \RequirePackage[toc,eqno,bib,lineno]{tabfigures}
-\else
-% If Minion not available, use Times and Helvetica.
-\RequirePackage{mathptmx}
-\RequirePackage[scaled=0.85]{helvet}
+\usepackage{textcomp}
+\usepackage[sb]{libertine}
+\usepackage[varqu,varl]{zi4}% inconsolata
+\usepackage[libertine,bigdelims,vvarbb]{newtxmath} % bb from STIX
+\usepackage[cal=boondoxo]{mathalfa} % mathcal
+\useosf % osf for text, not math
+\usepackage[supstfm=libertinesups,%
+    supscaled=1.2,%
+    raised=-.13em]{superiors}
+% \linespread{1.025}
 \providecommand{\lnstyle}{\relax}
-\fi
-
-%%% Use Computer Modern Typewriter as the monospace typeface.
-%%% (Code from cmtty.sty.)
-
-\DeclareRobustCommand{\tyfamily}{%
-  \fontfamily{cmtt}\fontencoding{OT1}\fontseries{m}\selectfont}
-
-\DeclareTextFontCommand{\textty}{\tyfamily}
-
-
-\let\texttt\textty
-\let\tt\tyfamily
-\let\ttfamily\tyfamily
-
-%%% Make it possible to hyphenate type set in Computer Modern
-%%% typewriter.
-
-\begingroup
-\catcode`\`=\active
-\gdef\FV@fontfamily@tt{%
-  \def\FV@FontScanPrep{\FV@MakeActive\`}%
-%% SR modification begin - 1995
-%%  \def\FV@FontFamily{\tt`{{\string`}}}}
-  \def\FV@FontFamily{\tyfamily\edef`{{\string`}}}}
-%% SR modification end
-\gdef\FV@fontfamily@cmtt{%
-  \def\FV@FontScanPrep{\FV@MakeActive\`}%
-  \def\FV@FontFamily{\edef`{{\string`}}\fontfamily{cmtt}}}
-\endgroup
-
-\AtBeginDocument{\def\verbatim@font{\normalfont\tyfamily}}
-
-
 
 %%% Load hyperref if not loaded.
 \@ifpackageloaded{hyperref}{}{%
