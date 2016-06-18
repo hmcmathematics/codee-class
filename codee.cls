@@ -86,7 +86,7 @@
 \RequirePackage[toc,eqno,bib,lineno]{tabfigures}
 \usepackage{textcomp}
 \usepackage[sb]{libertine}
-\usepackage[varqu,varl]{zi4}% inconsolata
+% \usepackage[varqu,varl]{zi4}% inconsolata
 \usepackage[libertine,bigdelims,vvarbb]{newtxmath} % bb from STIX
 \usepackage[cal=boondoxo]{mathalfa} % mathcal
 \useosf % osf for text, not math
@@ -95,6 +95,8 @@
     raised=-.13em]{superiors}
 % \linespread{1.025}
 \providecommand{\lnstyle}{\relax}
+
+\RequirePackage[scaled=0.9]{sourcecodepro}
 
 %%% Load hyperref if not loaded.
 \@ifpackageloaded{hyperref}{}{%
