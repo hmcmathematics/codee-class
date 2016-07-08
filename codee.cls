@@ -238,20 +238,15 @@
 %%% Define the page headers.
 \pagestyle{fancy}
   \fancyhf{}                    % Clear all headers and footers.
-  \fancyhead[LE]{\textsf{\textbf{\lnstyle\thepage}}}
-  \fancyhead[RE]{\textsf{\nouppercase{\@shorttitle}}}
-  \fancyhead[LO]{\textsf{\nouppercase{\@shortauthor}}}
-  \fancyhead[RO]{\textsf{\textbf{\lnstyle\thepage}}}
-  \fancyfoot[RE,LO]{\textsf{\textit{CODEE Journal} \textbullet\
-      \@pubtype\ \textbullet\ \@pubdate{} }}
-  \fancyfoot[LE,RO]{\textsf{Digital Library URL: }\hlurl{http://www.codee.org}}
-  \renewcommand{\headrulewidth}{1pt}
-  \renewcommand{\footrulewidth}{1pt}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \fancyfoot[C]{\textsf{\textbf{\textln{\thepage}}}
+}
 
 \fancypagestyle{front}{%
   \fancyhf{}
-  \fancyfoot[RE,LO]{\textsf{\textit{CODEE Journal} \textbullet\ \@pubtype}}
-  \fancyfoot[LE,RO]{\textsf{Digital Library URL: }\hlurl{http://www.codee.org}}
+  \fancyfoot[RE,LO]{\textsf{\emph{CODEE Journal}}}
+  \fancyfoot[LE,RO]{\hlurl{http://www.codee.org/}}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{1pt}
 }
