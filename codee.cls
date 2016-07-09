@@ -84,13 +84,13 @@
 %%% Set the base font.
 
 \RequirePackage[toc,eqno,bib,lineno]{tabfigures}
-\usepackage{textcomp}
-\usepackage[sb]{libertine}
-\usepackage[libertine,bigdelims,vvarbb]{newtxmath} % bb from STIX
-\usepackage[cal=boondoxo]{mathalfa} % mathcal
+\RequirePackage{textcomp}
+\RequirePackage[sb]{libertine}
 \RequirePackage[scaled=0.9]{sourcecodepro}
+\RequirePackage[libertine,bigdelims,vvarbb]{newtxmath} % bb from STIX
+\RequirePackage[cal=boondoxo]{mathalfa} % mathcal
 \useosf % osf for text, not math
-\usepackage[supstfm=libertinesups,%
+\RequirePackage[supstfm=libertinesups,%
     supscaled=1.2,%
     raised=-.13em]{superiors}
 % \linespread{1.025}
