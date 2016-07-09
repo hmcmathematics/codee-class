@@ -93,10 +93,14 @@
 \RequirePackage[supstfm=libertinesups,%
     supscaled=1.2,%
     raised=-.13em]{superiors}
-% \linespread{1.025}
-\providecommand{\lnstyle}{\relax}
 
-\RequirePackage[scaled=0.9]{sourcecodepro}
+% Make sure we have lining-style figures we can use for section
+% heads, page numbers, titles, and so on.
+\DeclareRobustCommand{\lnstyle}{\libertineLF}
+\DeclareRobustCommand{\sflnstyle}{\biolinumLF}
+\DeclareTextFontCommand{\textln}{\lnstyle}
+\DeclareTextFontCommand{\textsfln}{\sflnstyle}
+    
 
 %%% Load hyperref if not loaded.
 \@ifpackageloaded{hyperref}{}{%
@@ -117,7 +121,7 @@
   %% Define a command for creating a link to a URL in text while
   %% displaying the URL (as opposed to using text as a link, for
   %% which \href is fine).
-  \providecommand{\hlurl}[1]{\href{#1}{\textsf{\lnstyle{}#1}}}
+  \providecommand{\hlurl}[1]{\href{#1}{\textsfln{#1}}}
 }
 
 % The following code *does not work*, because hyperref redefines
@@ -240,7 +244,7 @@
   \fancyhf{}                    % Clear all headers and footers.
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
-  \fancyfoot[C]{\textsf{\textbf{\textln{\thepage}}}
+  \fancyfoot[C]{\textbf{\textsfln{\thepage}}
 }
 
 \fancypagestyle{front}{%
@@ -262,29 +266,29 @@
 
 %%% Make the section numbers appear using lining figures.
 %%% (\Tf@font comes from the tabfigures package.)
-\renewcommand{\@seccntformat}[1]{{\lnstyle\csname%
+\renewcommand{\@seccntformat}[1]{{\sflnstyle\csname%
 the#1\endcsname}\quad}%
 
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
                                    {2.3ex \@plus.2ex}%
-                                   {\sffamily\Large\bfseries\lnstyle}}
+                                   {\Large\bfseries\sflnstyle}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                                      {-3.25ex\@plus -1ex \@minus -.2ex}%
                                      {1.5ex \@plus .2ex}%
-                                     {\sffamily\large\bfseries\lnstyle}}
+                                     {\large\bfseries\sflnstyle}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                                      {-3.25ex\@plus -1ex \@minus -.2ex}%
                                      {1.5ex \@plus .2ex}%
-                                     {\sffamily\normalsize\bfseries\lnstyle}}
+                                     {\normalsize\bfseries\sflnstyle}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
                                     {3.25ex \@plus1ex \@minus.2ex}%
                                     {-1em}%
-                                    {\sffamily\normalsize\bfseries\lnstyle}}
+                                    {\normalsize\bfseries\sflnstyle}}
 \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
                                        {3.25ex \@plus1ex \@minus .2ex}%
                                        {-1em}%
-                                      {\sffamily\normalsize\bfseries\lnstyle}}
+                                      {\normalsize\bfseries\sflnstyle}}
 
 
 \renewcommand{\maketitle}{\par
