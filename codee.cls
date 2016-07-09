@@ -86,9 +86,9 @@
 \RequirePackage[toc,eqno,bib,lineno]{tabfigures}
 \usepackage{textcomp}
 \usepackage[sb]{libertine}
-% \usepackage[varqu,varl]{zi4}% inconsolata
 \usepackage[libertine,bigdelims,vvarbb]{newtxmath} % bb from STIX
 \usepackage[cal=boondoxo]{mathalfa} % mathcal
+\RequirePackage[scaled=0.9]{sourcecodepro}
 \useosf % osf for text, not math
 \usepackage[supstfm=libertinesups,%
     supscaled=1.2,%
