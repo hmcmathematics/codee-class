@@ -15,11 +15,22 @@ additional information about writing CODEE submissions.
 
 ## Getting the Document Class File
 
-You can get a copy of the class and supporting materials in a few different ways.  The easiest is probably to go to [the releases page](https://github.com/hmcmathematics/codee-class/releases) and download the `tar.gz` file (for Linux systems) or the Zip file for the latest release.
+You can get a copy of the latest version of the class and
+supporting materials by going to
+[the releases page](https://github.com/hmcmathematics/codee-class/releases/latest)
+and downloading the latest release listed there, which is currently
+[Version 2.0](https://github.com/hmcmathematics/codee-class/releases/tag/v2.0).
 
-Alternatively, you could clone [this GitHub repository](https://github.com/hmcmathematics/codee-class) (click on the green "Clone or download" button on the right side of the page).
+Archives are available as
+[Zip](https://github.com/hmcmathematics/codee-class/archive/v2.0.zip)
+or
+[`tar.gz`](https://github.com/hmcmathematics/codee-class/archive/v2.0.tar.gz)
+files.
 
-_(We're also looking at making the code available through [CTAN](http://www.ctan.org)/TeX Live.)_
+Alternatively, you can clone [this GitHub repository](https://github.com/hmcmathematics/codee-class) (click on the green "Clone or download" button on the right side of the page).
+
+_(We're also looking at making the code available through
+[CTAN](http://www.ctan.org)/TeX Live.)_
 
 
 ## Installing and Using the Document Class File
